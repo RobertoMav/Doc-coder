@@ -1,5 +1,6 @@
 """A file to test the ty type hinting."""
 
+import os
 from typing import Annotated
 
 from pydantic import BaseModel, Field
@@ -38,10 +39,6 @@ class User(BaseSettings):
     api_secret: str
 
 
-# user = User()
-# print(user.api_key)
-# print(user.api_secret)
-# print all the env variables
-import os
-
 print(os.environ)
+
+
