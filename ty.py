@@ -1,9 +1,8 @@
 """A file to test the ty type hinting."""
 
-import os
 from typing import Annotated
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 from pydantic_settings import BaseSettings
 
 
@@ -35,10 +34,10 @@ except Exception as e:
 
 
 class User(BaseSettings):
-    api_key: str
-    api_secret: str
+    API_KEY: str = Field(..., description="The API key")
+    API_URL: str = Field(..., description="The API URL")
+
+    model_config: ConfigDict = ConfigDict(env_file=".env", env_file_encoding="utf-8")
 
 
-print(os.environ)
-
-
+print(User())
